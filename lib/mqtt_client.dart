@@ -16,6 +16,7 @@ class SoilIntegratorApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Soil Monitoring',
       theme: ThemeData(
         primarySwatch: Colors.green,
