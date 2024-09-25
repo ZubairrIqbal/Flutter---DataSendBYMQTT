@@ -36,11 +36,14 @@ class SoilMonitoringScreen extends StatefulWidget {
 }
 
 class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
-    final String broker = '10.0.0.153'; 
+
+
+  final String broker = '10.0.0.153'; 
   final String topic = 'sensor/data'; 
   final String clientId = 'flutter_client'; 
   late MqttServerClient client;
 
+  
   @override
   void initState() {
     super.initState();
