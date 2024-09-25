@@ -36,7 +36,7 @@ class SoilMonitoringScreen extends StatefulWidget {
 }
 
 class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
-    final String broker = '10.0.0.153'; 
+    final String broker = '10.0.153'; 
   final String topic = 'sensor/data'; 
   final String clientId = 'flutter_client'; 
   late MqttServerClient client;
@@ -59,8 +59,8 @@ class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
       context: context, 
       title: 'Oops!',
       text: 'Data did not send',
-      confirmBtnColor: appColor,
-      type: QuickAlertType.warning);
+      confirmBtnColor: const Color.fromARGB(255, 224, 47, 34),
+      type: QuickAlertType.error);
   }
 
   Future<void> _setupMqttClient() async {
