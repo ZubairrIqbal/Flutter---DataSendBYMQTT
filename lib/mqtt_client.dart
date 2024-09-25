@@ -36,7 +36,7 @@ class SoilMonitoringScreen extends StatefulWidget {
 }
 
 class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
-    final String broker = '10.0.153'; 
+    final String broker = '10.0.0.153'; 
   final String topic = 'sensor/data'; 
   final String clientId = 'flutter_client'; 
   late MqttServerClient client;
@@ -52,6 +52,7 @@ class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
       title: 'Data Sent',
       text: 'Data has been Succesfully sent',
       confirmBtnColor: appColor,
+      autoCloseDuration: Duration(seconds:10),
       type: QuickAlertType.success);
   }
   void _showWarningAlert (){
@@ -60,6 +61,7 @@ class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
       title: 'Oops!',
       text: 'Data did not send',
       confirmBtnColor: const Color.fromARGB(255, 224, 47, 34),
+      autoCloseDuration: Duration(seconds: 10),
       type: QuickAlertType.error);
   }
 
