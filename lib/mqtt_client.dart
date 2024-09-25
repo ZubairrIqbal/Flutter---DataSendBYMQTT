@@ -8,6 +8,7 @@ import 'package:mqtt_client/mqtt_server_client.dart';
 import 'package:sensorflutterapp/colors.dart';
 import 'package:sensorflutterapp/componants/card_componant.dart';
 import 'package:sensorflutterapp/componants/linechart.dart';
+import 'package:quickalert/quickalert.dart';
 
 
 
@@ -45,6 +46,22 @@ class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
     super.initState();
     _setupMqttClient();
   }
+  void _showSuccesAlert (){
+    QuickAlert.show(
+      context: context, 
+      title: 'Data Sent',
+      text: 'Data has been Succesfully sent',
+      confirmBtnColor: appColor,
+      type: QuickAlertType.success);
+  }
+  void _showWarningAlert (){
+    QuickAlert.show(
+      context: context, 
+      title: 'Oops!',
+      text: 'Data did not send',
+      confirmBtnColor: appColor,
+      type: QuickAlertType.warning);
+  }
 
   Future<void> _setupMqttClient() async {
     client = MqttServerClient(broker, clientId)
@@ -52,6 +69,7 @@ class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
       ..onConnected = _onConnected
       ..onDisconnected = _onDisconnected
       ..onSubscribed = _onSubscribed;
+      client.port =1883;
 
     final connMessage = MqttConnectMessage()
         .withClientIdentifier(clientId)
@@ -102,9 +120,11 @@ class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
       builder.addString(jsonData);
 
       client.publishMessage(topic, MqttQos.exactlyOnce, builder.payload!);
+      _showSuccesAlert();
       print('Sensor data sent: $jsonData');
+
     } else {
-      print('Client not connected');
+      _showWarningAlert();
     }
   }
   @override
