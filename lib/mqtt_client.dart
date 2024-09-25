@@ -153,8 +153,7 @@ class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CardComponant(
-                    label: 'Temperature', value: temperature, unit: '°C'),
+                CardComponant(label: 'Temperature', value: temperature, unit: '°C'),
                 CardComponant(label: 'Moisture', value: moisture, unit: '%'),
                 CardComponant(label: 'pH Level', value: pH, unit: ''),
               ],
