@@ -72,7 +72,7 @@ class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
       ..onConnected = _onConnected
       ..onDisconnected = _onDisconnected
       ..onSubscribed = _onSubscribed;
-    client.port = 1883;
+    // client.port = 1883;
 
     final connMessage = MqttConnectMessage()
         .withClientIdentifier(clientId)
@@ -104,14 +104,13 @@ class _SoilMonitoringScreenState extends State<SoilMonitoringScreen> {
   }
 
   double temperature = 25.0;
-  double moisture = 30.0;
-  double pH = 50;
+  double moisture = 20.0;
+  double pH = 8;
 
   void _sendSensorData() {
     if (client.connectionStatus!.state == MqttConnectionState.connected) {
       final builder = MqttClientPayloadBuilder();
 
-      // Example sensor data
       final sensorData = {
         'temperature': 25.5,
         'humidity': 65.2,

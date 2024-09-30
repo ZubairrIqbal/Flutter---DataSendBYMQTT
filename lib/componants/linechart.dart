@@ -26,7 +26,7 @@ class Linechart extends StatelessWidget {
                       isCurved: true,
                       color: Colors.green,
                       barWidth: 4,
-                      belowBarData: BarAreaData(show: false),
+                      belowBarData: BarAreaData(show: true),
                     ),
                   ],
                 ),
